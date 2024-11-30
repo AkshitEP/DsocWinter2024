@@ -18,12 +18,12 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
       <Navigation />
-      <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-        <div className="px-4 py-6 sm:px-0">
-          <h1 className="text-4xl font-bold text-center text-blue-800 mb-8">
+      <main className="max-w-7xl mx-auto py-4 sm:py-6 px-4 sm:px-6 lg:px-8">
+        <div className="py-4 sm:py-6">
+          <h1 className="text-3xl sm:text-4xl font-bold text-center text-blue-800 mb-6 sm:mb-8">
             Winter DSOC Leaderboard
           </h1>
-          <div className="bg-white p-6 rounded-3xl shadow-lg">
+          <div className="bg-white p-2 sm:p-6 rounded-3xl shadow-lg">
             <Leaderboard title="Overall Leaderboard" participants={participants} />
           </div>
         </div>
