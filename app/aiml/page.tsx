@@ -14,19 +14,19 @@ const allParticipants = [
   { id: 10, name: "Jack Brown", points: 75, categories: ["Backend", "AI/ML"] }
 ]
 
-export default function AppDev() {
-  const appDevParticipants = allParticipants.filter(participant => 
+export default function AIML() {
+  const aimlParticipants = allParticipants.filter(participant => 
     participant.categories.includes("AI/ML")
   )
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
       <Navigation />
-      <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-        <div className="px-4 py-6 sm:px-0">
-          <h1 className="text-4xl font-bold text-center text-blue-800 mb-8">AI/ML Leaderboard</h1>
-          <div className="bg-white p-6 rounded-3xl shadow-lg">
-            <Leaderboard title="AppDev Leaderboard" participants={appDevParticipants} />
+      <main className="max-w-7xl mx-auto py-4 sm:py-6 px-4 sm:px-6 lg:px-8">
+        <div className="py-4 sm:py-6">
+          <h1 className="text-3xl sm:text-4xl font-bold text-center text-blue-800 mb-6 sm:mb-8">AI/ML Leaderboard</h1>
+          <div className="bg-white p-2 sm:p-6 rounded-3xl shadow-lg">
+            <Leaderboard title="AI/ML Leaderboard" participants={aimlParticipants} />
           </div>
         </div>
       </main>
