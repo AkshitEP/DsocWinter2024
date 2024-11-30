@@ -1,43 +1,36 @@
-import Link from 'next/link'
-import { Code2, Server, Layers, Brain } from 'lucide-react'
+import Navigation from '../components/Navigation'
+import Leaderboard from '../components/Leaderboard'
 
-const Navigation = () => {
+const allParticipants = [
+  { id: 1, name: "Alice Johnson", points: 120, categories: ["AppDev", "Frontend"] },
+  { id: 2, name: "Bob Smith", points: 115, categories: ["Backend", "AI/ML"] },
+  { id: 3, name: "Charlie Brown", points: 110, categories: ["Frontend", "AppDev"] },
+  { id: 4, name: "David Lee", points: 105, categories: ["AI/ML", "Backend"] },
+  { id: 5, name: "Eva Martinez", points: 100, categories: ["AppDev", "Backend"] },
+  { id: 6, name: "Frank Wilson", points: 95, categories: ["Backend", "Frontend"] },
+  { id: 7, name: "Grace Taylor", points: 90, categories: ["Frontend", "AI/ML"] },
+  { id: 8, name: "Henry Davis", points: 85, categories: ["AI/ML", "AppDev"] },
+  { id: 9, name: "Ivy Chen", points: 80, categories: ["AppDev", "Backend", "Frontend"] },
+  { id: 10, name: "Jack Brown", points: 75, categories: ["Backend", "AI/ML"] }
+]
+
+export default function Backend() {
+  const backendParticipants = allParticipants.filter(participant => 
+    participant.categories.includes("Backend")
+  )
+
   return (
-    <nav className="bg-white shadow-md overflow-x-auto">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
-        <div className="flex items-center h-16 space-x-4 sm:space-x-8">
-          <Link href="/" className="flex items-center">
-            <span className="text-2xl font-bold text-blue-600 mr-2">❄️</span>
-            <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-blue-400">Winter DSOC</span>
-          </Link>
-          <div className="flex space-x-4 sm:space-x-8 text-sm sm:text-base">
-            <NavLink href="/" exact>Overall</NavLink>
-            <NavLink href="/appdev"><Code2 className="mr-1" size={16} /> AppDev</NavLink>
-            <NavLink href="/backend"><Server className="mr-1" size={16} /> Backend</NavLink>
-            <NavLink href="/frontend"><Layers className="mr-1" size={16} /> Frontend</NavLink>
-            <NavLink href="/aiml"><Brain className="mr-1" size={16} /> AI/ML</NavLink>
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
+      <Navigation />
+      <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+        <div className="px-4 py-6 sm:px-0">
+          <h1 className="text-4xl font-bold text-center text-blue-800 mb-8">Backend Leaderboard</h1>
+          <div className="bg-white p-6 rounded-3xl shadow-lg">
+            <Leaderboard title="Backend Leaderboard" participants={backendParticipants} />
           </div>
         </div>
-      </div>
-    </nav>
+      </main>
+    </div>
   )
 }
-
-const NavLink = ({ href, children, exact = false }) => {
-  const isActive = typeof window !== 'undefined' && (exact ? window.location.pathname === href : window.location.pathname.startsWith(href))
-  return (
-    <Link
-      href={href}
-      className={`inline-flex items-center px-1 pt-1 border-b-2 text-sm sm:text-base font-medium transition-colors duration-200 whitespace-nowrap ${
-        isActive
-          ? 'border-blue-500 text-blue-600'
-          : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'
-      }`}
-    >
-      {children}
-    </Link>
-  )
-}
-
-export default Navigation
 
